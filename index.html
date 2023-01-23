@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <button type="button" class="button-v1 button-v1--medium">Button</button>
+  
+  <button type="button" class="button-v2 button-v2--medium">Button</button>
+  
+  <button class="button-v3" type="button">
+    <span class="button-v3__circle">
+        <span class="button-v3__icon-arrow"></span>
+    </span>
+    <span class="button-v3__text">Learn More</span>
+  </button>
+
+  <div class="lang-switcher-v1" data-switcher="">
+    <button
+        class="lang-switcher-v1__current"
+        data-switcher-current="header-switcher"
+    >
+        <span class="lang-switcher-v1__current-name">ENG</span>
+        <svg
+            class="lang-switcher-v1__current-icon"
+            width="11"
+            height="6"
+            viewBox="0 0 11 6"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path d="M0.694458 0.5L5.3473 5L10.0002 0.5"></path>
+        </svg>
+    </button>
+    <ul class="lang-switcher-v1__list" data-switcher-list="">
+        <li class="lang-switcher-v1__list-item">
+            <a
+                href="#!"
+                class="lang-switcher-v1__link lang-switcher-v1__link--current"
+                >ENG</a
+            >
+        </li>
+        <li class="lang-switcher-v1__list-item">
+            <a href="#!" class="lang-switcher-v1__link">DT</a>
+        </li>
+        <li class="lang-switcher-v1__list-item">
+            <a href="#!" class="lang-switcher-v1__link">FR</a>
+        </li>
+    </ul>
+</div>
+
+<div
+    class="ticker-v1"
+    data-ticker=""
+    data-ticker-direction="to_right"
+    data-ticker-speed="40000"
+>
+    <p class="ticker-v1__text" data-ticker-inner=""
+        >/ Yet a team of 20 pros / Products working worldwide / Monthly company
+        growth / Challenging marketing / Advanced development / Products for
+        Mobile &amp; Desktop / Friendly team &amp; flexible work conditions /
+        Ambitious goals / Yet a team of 20 pros / Products working worldwide /
+        Monthly company growth / Challenging marketing / Advanced development /
+        Products for Mobile &amp; Desktop / Friendly team &amp; flexible work
+        conditions / Ambitious goals</p
+    >
+</div>
+
+<button
+    type="button"
+    class="hamburger-v1"
+    aria-label="Click to toggle mobile menu"
+    data-hamburger=""
+>
+    <span class="hamburger-v1__line"></span>
+    <span class="hamburger-v1__line"></span>
+    <span class="hamburger-v1__line"></span>
+    <span class="hamburger-v1__line"></span>
+</button>
+
+<label class="switcher-version-1">
+  <input
+      class="switcher-version-1__input"
+      type="checkbox"
+      checked=""
+      name="checkbox-name"
+  />
+  <span class="switcher-version-1__toggle"></span>
+  <span class="switcher-version-1__label">Android Switcher</span>
+</label>
+
+<label class="switcher-v2">
+  <input class="switcher-v2__input" type="checkbox" name="checkbox-name" />
+  <span class="switcher-v2__toggle"></span>
+  <span class="switcher-v2__label">Flat Switcher</span>
+</label>
+
+<label class="switcher-v3">
+  <input
+      class="switcher-v3__input"
+      type="checkbox"
+      checked=""
+      name="checkbox-name"
+  />
+  <span class="switcher-v3__toggle"></span>
+  <span class="switcher-v3__label">Material Switcher</span>
+</label>
+
+<div class="switcher-v4">
+  <input
+      class="switcher-v4__input"
+      type="radio"
+      checked=""
+      name="radiobutton-name"
+      value="month-price"
+      data-left-switcher-v4=""
+  />
+  <input
+      class="switcher-v4__input"
+      type="radio"
+      name="radiobutton-name"
+      value="year-price"
+      data-right-switcher-v4=""
+  />
+  <span class="switcher-v4__toggle">
+      <span class="switcher-v4__toggle-label">Month</span>
+      <span class="switcher-v4__toggle-label">Year</span>
+  </span>
+</div>
+
+<label class="switcher-v5">
+  <input
+      class="switcher-v5__input"
+      type="checkbox"
+      checked=""
+      name="checkbox-name"
+  />
+  <span class="switcher-v5__toggle">
+      <span class="switcher-v5__toggle-label">On</span>
+      <span class="switcher-v5__toggle-label">Off</span>
+  </span>
+  <span class="switcher-v5__label">Android Switcher</span>
+</label>
+
+<label class="switcher-v6">
+  <input
+      class="switcher-v6__input"
+      type="checkbox"
+      checked=""
+      name="checkbox-name"
+  />
+  <span class="switcher-v6__toggle">
+      <span class="switcher-v6__toggle-label">on</span>
+      <span class="switcher-v6__toggle-label">off</span>
+  </span>
+  <span class="switcher-v6__label">Flip Switcher</span>
+</label>
+
+<label class="switcher-v7">
+  <input class="switcher-v7__input" type="checkbox" name="checkbox-name" />
+  <span class="switcher-v7__toggle">
+      <span class="switcher-v7__toggle-label">on</span>
+      <span class="switcher-v7__toggle-label">off</span>
+  </span>
+  <span class="switcher-v7__label">Skewed Switcher</span>
+</label>
+
+
+<label class="textfield-v1">
+  <input
+      class="textfield-v1__field"
+      type="text"
+      name="name"
+      value=""
+      placeholder=" "
+  />
+  <span class="textfield-v1__label">Textfield</span>
+</label>
+
+<label class="textfield-v2">
+  <input
+      class="textfield-v2__field"
+      type="text"
+      name="name"
+      value=""
+      placeholder=" "
+  />
+  <span class="textfield-v2__label">Textfield</span>
+</label>
+
+<label class="textfield-v3">
+  <input
+      class="textfield-v3__field"
+      type="text"
+      name="name"
+      value=""
+      placeholder=" "
+  />
+  <span class="textfield-v3__label">Textfield</span>
+</label>
+
+<label class="textfield-v2">
+  <input
+      class="textfield-v2__field"
+      type="tel"
+      name="user-phone"
+      value=""
+      placeholder=" "
+      data-phone-mask="+38 (0__) ___ __ __"
+  />
+  <span class="textfield-v2__label">Enter phone</span>
+</label>
+  <script type="module" src="./assets/js/main.js"></script>
+</body>
+</html>

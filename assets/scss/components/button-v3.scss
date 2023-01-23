@@ -1,0 +1,109 @@
+$primary: #1ea7fd;
+$primary-hover: #0495f3;
+$primary-active: #0891ea;
+$primary-focus: #98d3ff;
+
+.button-v3 {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 0 20px 0 50px;
+  width: auto;
+  height: 40px;
+
+  @media (any-hover: hover) {
+    &:hover {
+      .button-v3__circle {
+        width: 100%;
+      }
+
+      .button-v3__text {
+        color: #fff;
+      }
+
+      .button-v3__icon-arrow {
+        transform: translateX(8px);
+
+        &::before {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: 0;
+
+    .button-v3__circle {
+      outline: 4px solid $primary-focus;
+    }
+  }
+
+  &:active {
+    .button-v3__circle {
+      background-color: $primary-active;
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    background-color: $primary;
+    border-radius: 40px;
+    transition: width .3s ease-in-out, background-color .3s ease-in-out;
+  }
+
+  &__icon-arrow {
+    box-sizing: border-box;
+    display: block;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 9px;
+    left: 4px;
+    transition: transform .3s ease-in-out;
+
+    &::after,
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 3px;
+    }
+
+    &::after {
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid #fff;
+      border-right: 2px solid #fff;
+      transform: rotate(45deg);
+      bottom: 7px;
+    }
+
+    &::before {
+      width: 16px;
+      height: 2px;
+      bottom: 10px;
+      background-color: #fff;
+      transform: scale(0);
+      transform-origin: left;
+      transition: transform .3s ease-in-out;
+    }
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #222222;
+    position: relative;
+    z-index: 2;
+    transition: color .2s ease-in-out;
+  }
+}

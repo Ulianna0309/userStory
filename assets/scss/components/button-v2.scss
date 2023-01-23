@@ -1,0 +1,61 @@
+$primary: #1ea7fd;
+$primary-hover: #0495f3;
+$primary-active: #0891ea;
+$primary-focus: #98d3ff;
+
+.button-v2 {
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  cursor: pointer;
+  color: $primary;
+  background-color: #fff;
+  border: 2px solid $primary;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color .2s ease-in-out, color .2s ease-in-out, border-color .2s ease-in-out;
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: #fff;
+      background-color: $primary-hover;
+      border-color: $primary-hover;
+    }
+  }
+
+  &:focus-visible {
+    outline: 4px solid $primary-focus;
+  }
+
+  &:active {
+    color: #fff;
+    background-color: $primary-active;
+    border-color: $primary-active;
+  }
+
+  &--small {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+  }
+
+  &--medium {
+    padding: 1.2rem 3rem;
+    font-size: 1.6rem;
+  }
+
+  &--large {
+    padding: 1.4rem 4rem;
+    font-size: 1.8rem;
+  }
+
+  &[disabled] {
+    color: rgba(0, 0, 0, 0.40);
+    background-color: rgba(0, 0, 0, 0.12);
+    border: 2px solid rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+    outline: none;
+  }
+}
