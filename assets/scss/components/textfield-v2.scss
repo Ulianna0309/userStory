@@ -31,7 +31,7 @@ $dark: #000;
       border-top-color: rgba($dark, 0.6);
     }
 
-    &:not(:focus):placeholder-shown + .textfield-v2__label, {
+    &:not(:focus):placeholder-shown + .textfield-v2__label{
       font-size: inherit;
       line-height: 58px;
     }
@@ -140,4 +140,6 @@ $dark: #000;
       transition-duration: 0.1s;
     }
   }
+}
+
 }

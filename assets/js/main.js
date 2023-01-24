@@ -174,3 +174,386 @@ function Hamburger() {
 }
 
 phoneMask()
+
+
+// import intlTelInput from 'intl-tel-input';
+// import 'intl-tel-input/build/js/utils.js';
+
+// function initIntlTel(selector) {
+//   const input = document.querySelector(selector);
+//   if (!input) return;
+//   let iti;
+
+//   if (!input.hasAttribute('data-intl-tel-input-id')) {
+//     iti = intlTelInput(input, {
+//       separateDialCode: true,
+//       nationalMode: false,
+//       autoPlaceholder: 'polite',
+//     });
+
+//     setAttributeForMask(input);
+//     phoneMask();
+
+//     input.addEventListener('countrychange', function () {
+//       this.value = '';
+//       this.blur();
+//       setAttributeForMask(this);
+//     });
+//   }
+
+//   function setAttributeForMask(input) {
+//     const placeholder = input.getAttribute('placeholder');
+//     input.dataset.phoneMask = placeholder.replace(/[0-9]/gi, '_');
+//   }
+
+//   return iti;
+// }
+
+// initIntlTel()
+
+
+
+
+
+
+const Hamburger2 = () => {
+  // VARS
+  const hamburger = document.querySelector('[data-hamburger2]');
+  const activeClass = 'hamburger-v1--active';
+
+  // LISTENERS
+  hamburger?.addEventListener('click', handleOnClickHamburger, false)
+
+  // HANDLERS
+  function handleOnClickHamburger() {
+    toggle();
+  }
+
+  // FUNCTIONS & METHODS
+  const toggle = () => {
+    hamburger.classList.toggle(activeClass);
+  }
+}
+Hamburger2()
+
+
+// import { anime } from 'animejs';
+
+const DropDownLinks = () => {
+  // VARS
+  const dropdownLinksButtons = document.querySelectorAll('[data-header-dropdown-link]');
+  const submenus = document.querySelectorAll('[data-header-dropdown-list]');
+  const activeClassArrow = 'header-v1__link-dropdown-arrow--open';
+  const activeClass = 'header-v1__sublist--visible-on-focus';
+
+  // LISTENERS
+  dropdownLinksButtons.forEach(button => {
+    button.addEventListener('click', handleOnClickDropdownButton, false);
+  });
+
+  document.addEventListener('keydown', handleOnKeydown);
+
+  document.addEventListener('click', handleOnClickDocument, false);
+
+  document.addEventListener('scroll', handleOnScroll, false);
+
+  // HANDLERS
+  function handleOnClickDropdownButton(event) {
+    if (window.innerWidth < 1024) {
+      event.preventDefault();
+      toggleDropdown(this);
+    }
+  }
+
+  function handleOnKeydown(event) {
+    if (event.key === "Tab") {
+      setTimeout(() => {
+        toggleSubmenuOnTab();
+      }, 0);
+    }
+
+    if (event.key === "Escape") {
+      closeAll();
+    }
+  }
+
+  function handleOnClickDocument(e) {
+    if(!e.target.closest('[data-header-dropdown-list-wrapper]')) {
+      closeAll();
+    }
+  }
+
+  function handleOnScroll() {
+    closeAll();
+  }
+
+  // FUNCTIONS & METHODS
+  const toggleDropdown = (button) => {
+    const dropdownList = button.closest('[data-header-dropdown-list-wrapper]').querySelector('[data-header-dropdown-list]');
+    const stateDropdownList = dropdownList.dataset.headerDropdownList;
+    button.classList.toggle(activeClassArrow);
+
+    if (stateDropdownList === 'close') {
+      openDropdown(dropdownList);
+    } else {
+      closeDropdown(dropdownList);
+    }
+  }
+
+  const openDropdown = (dropdownList) => {
+    anime({
+      targets: dropdownList,
+      height: [0, dropdownList.scrollHeight],
+      duration: 300,
+      easing: 'easeOutExpo',
+      complete: function() {
+        dropdownList.style.height = 'auto';
+        dropdownList.dataset.headerDropdownList = 'open';
+      }
+    })
+  }
+
+  const closeDropdown = (dropdownList) => {
+    dropdownList.style.height = dropdownList.scrollHeight + 'px';
+
+    anime({
+      targets: dropdownList,
+      height: [dropdownList.scrollHeight, 0],
+      duration: 500,
+      easing: 'easeOutExpo',
+      complete: function() {
+        dropdownList.style.height = '';
+        dropdownList.dataset.headerDropdownList = 'close';
+      }
+    })
+  }
+
+  const toggleSubmenuOnTab = () => {
+    const activeElement = document.activeElement;
+    const activeElementContainer = activeElement.closest('[data-header-dropdown-list]');
+
+    if (activeElementContainer) {
+      activeElementContainer.classList.add(activeClass)
+    } else {
+      closeAll();
+    }
+  }
+
+  const closeAll = () => {
+    submenus.forEach(submenu => {
+      submenu.classList.remove(activeClass);
+    })
+  }
+}
+
+const MobileMenu = () => {
+  // INITS
+  // new DropDownLinks();
+  // new LangSwitcher();
+  // initStopAnimationOnResize();
+  // new Hamburger();
+
+  // VARS
+  const header = document.querySelector('[data-header]');
+  const hamburger = document.querySelector('[data-hamburger]');
+  const activeClass = 'header-v1--open';
+
+  // LISTENERS
+  hamburger?.addEventListener('click', handleOnClickHamburger, false);
+
+  // HANDLERS
+  function handleOnClickHamburger() {
+    toggle();
+    // header?.classList.contains(activeClass) ? disableScroll() : enableScroll();
+  }
+
+  // FUNCTIONS & METHODS
+  const toggle = () => {
+    header?.classList.toggle(activeClass);
+  }
+}
+
+MobileMenu()
+
+
+
+const InitMessenger = () => {
+  // VARS
+  const $this = this;
+  const chat = document.querySelector('[data-messenger-v1]');
+  const activeClass = 'messenger-v1--is-open';
+  if (!chat) return;
+
+  // LISTENERS
+  chat.addEventListener('click', handleOnClick, false);
+
+  document.addEventListener('keydown', handleOnKeydown);
+
+  document.addEventListener('click', handleOnClickDocument, false);
+
+  // HANDLERS
+  function handleOnClick() {
+    toggle();
+  }
+
+  function handleOnKeydown(event) {
+    if (event.key === "Escape") {
+      close();
+    }
+
+    if (event.key === "Tab") {
+      setTimeout(() => {
+        toggleOnTab();
+      }, 0);
+    }
+  }
+
+  function handleOnClickDocument(event) {
+    if(!event.target.closest('[data-messenger-v1]')) {
+      close();
+    }
+  }
+
+  // METHODS & FUNCTIONS
+  const toggle = () => {
+    chat.classList.contains(activeClass) ? close() : open();
+  }
+
+  const open = () => {
+    chat.classList.add(activeClass);
+  }
+
+  const close = () => {
+    chat.classList.remove(activeClass);
+  }
+
+  const toggleOnTab = () => {
+    const activeElement = document.activeElement;
+    const activeElementContainer = activeElement.closest('[data-messenger-v1]');
+
+    activeElementContainer ? open() : close();
+  }
+}
+
+InitMessenger()
+
+const initScrollDownButton = (distance = window.innerHeight) => {
+  const button = document.querySelector('[data-scroll-down-button]');
+
+  button?.addEventListener('click', function () {
+    window.scrollTo({
+      top: distance,
+      behavior: 'smooth',
+    })
+  })
+}
+
+initScrollDownButton();
+
+
+const initScrollToTop = () => {
+  // VARS
+  const button = document.querySelector('[data-scroll-to-top-button]');
+  if (!button) return;
+
+  // LISTENERS
+  button.addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
+
+  window.addEventListener('scroll', function () {
+    toggleButton();
+  })
+
+  // INITS
+  toggleButton();
+
+
+  // FUNCTION
+  function toggleButton() {
+    window.pageYOffset > 400
+      ? button.classList.add('scroll-to-top-button-v1--visible')
+      : button.classList.remove('scroll-to-top-button-v1--visible');
+  }
+};
+
+initScrollToTop()
+
+
+// import anime from 'animejs/lib/anime.es.js';
+
+const initAccordion = () => {
+  // VARS
+  const toggles = document.querySelectorAll('[data-accordion-toggle]');
+  if (!toggles.length) return;
+  let duration = 300;
+  const activeClass = 'accordion-v1--is-open';
+
+  // EVENTS
+  toggles.forEach((toggle) => {
+    toggle.addEventListener('click', handleOnClick, false);
+  });
+
+  // HANDLERS
+  function handleOnClick() {
+    const accordion = this.closest('[data-accordion]');
+    const accordionWrapper = accordion.closest('[data-accordions]');
+    const isNeedClosePrevious = accordionWrapper.dataset.accordions;
+
+    if (isNeedClosePrevious === 'close-previous') {
+      const previousAccordion = accordionWrapper.querySelector(`.${activeClass}`);
+
+      if (previousAccordion) {
+        if (previousAccordion === accordion) {
+          toggleAccordion(accordion);
+        } else {
+          closeAccordion(previousAccordion);
+          openAccordion(accordion);
+        }
+      } else {
+        toggleAccordion(accordion);
+      }
+    } else {
+      toggleAccordion(accordion);
+    }
+  }
+
+  // FUNCTIONS
+  function openAccordion(accordion) {
+    const body = accordion.querySelector('[data-accordion-body]');
+    const height = body.scrollHeight;
+    accordion.classList.add(activeClass);
+
+    anime({
+      targets: body,
+      height: [0, height],
+      easing: 'linear',
+      duration: duration,
+      complete: function () {
+        body.style.height = 'auto';
+      },
+    });
+  }
+
+  function closeAccordion(accordion) {
+    const body = accordion.querySelector('[data-accordion-body]');
+    const height = body.scrollHeight;
+    body.style.height = `${height}px`;
+    accordion.classList.remove(activeClass);
+
+    anime({
+      targets: body,
+      height: 0,
+      easing: 'linear',
+      duration: duration,
+    });
+  }
+
+  function toggleAccordion(accordion) {
+    accordion.classList.contains(activeClass) ? closeAccordion(accordion) : openAccordion(accordion);
+  }
+};
+initAccordion();

@@ -1,0 +1,134 @@
+$primary: #1ea7fd;
+$textColor: #222;
+$disableColor: #888;
+
+.radio-input-v1 {
+  z-index: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  cursor: pointer;
+
+  @media (any-hover: hover) {
+    &:hover {
+      .radio-input-v1__fake-radio {
+        &:before {
+          transform: translate(-50%, -50%) scale(2.4);
+        }
+      }
+    }
+  }
+
+  &--reverse {
+    flex-direction: row-reverse;
+
+    .radio-input-v1__label {
+      margin-left: 0;
+      margin-right: 8px;
+    }
+  }
+
+  &__input {
+    appearance: none;
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+
+    &:focus-visible {
+      & ~ .radio-input-v1__fake-radio {
+        &:before {
+          transform: translate(-50%, -50%) scale(2.4);
+        }
+      }
+    }
+
+    &:checked {
+      & ~ .radio-input-v1__fake-radio {
+        border-color: $primary;
+
+        &:before {
+          background-color: $primary;
+        }
+
+        &:after {
+          transform: scale(1);
+        }
+      }
+    }
+
+    &[disabled] {
+      & ~ * {
+        pointer-events: none;
+      }
+
+      & ~ .radio-input-v1__label {
+        color: $disableColor;
+      }
+
+      & ~ .radio-input-v1__fake-radio {
+        border-color: $disableColor;
+
+        &:before {
+          display: none;
+        }
+      }
+
+      &:checked ~ .radio-input-v1__fake-radio {
+        border-color: $disableColor;
+        background-color: $disableColor;
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__fake-radio {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px rgba($textColor, 0.6);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $primary;
+      transition: transform 0.2s ease-in-out;
+      transform-origin: center;
+      transform: scale(0);
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: $textColor;
+      border-radius: 50%;
+      opacity: .075;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform .2s ease-in-out, background-color .2s ease-in-out;
+    }
+  }
+
+  &__label {
+    margin-left: 8px;
+    margin-right: 0;
+    color: $textColor;
+  }
+}
